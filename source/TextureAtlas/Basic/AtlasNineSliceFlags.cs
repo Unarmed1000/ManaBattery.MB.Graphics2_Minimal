@@ -1,7 +1,8 @@
-﻿//****************************************************************************************************************************************************
+﻿#nullable enable
+//****************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2020, Mana Battery
+//* Copyright (c) 2020-2024, Mana Battery
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -41,7 +42,7 @@ namespace MB.Graphics2.TextureAtlas.Basic
     /// <summary>
     /// No flags set
     /// </summary>
-    None = 0,
+    None = 0,  // This is equal to a Opaque nine slice
 
     /// <summary>
     /// Slice0 contains transparent pixels
@@ -79,13 +80,25 @@ namespace MB.Graphics2.TextureAtlas.Basic
     /// Slice8 contains transparent pixels
     /// </summary>
     Slice8Transparent = 0x100,
+
+    /// <summary>
+    /// All slices are transparent
+    /// </summary>
+    Transparent = Slice0Transparent | Slice1Transparent | Slice2Transparent | Slice3Transparent | Slice4Transparent | Slice5Transparent |
+                  Slice6Transparent | Slice7Transparent | Slice8Transparent
   }
 
   public static class AtlasNineSliceFlagsExt
   {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool IsFlagged(this AtlasNineSliceFlags thisExt, AtlasNineSliceFlags flags) => (thisExt & flags) == flags;
-  }
+
+
+    public static AtlasNineSliceFlags GetTransparencyFlags(this AtlasNineSliceFlags thisExt)
+    {
+      return thisExt & AtlasNineSliceFlags.Transparent;
+    }
+}
 }
 
 //****************************************************************************************************************************************************

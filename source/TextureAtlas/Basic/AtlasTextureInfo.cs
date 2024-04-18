@@ -1,7 +1,8 @@
+#nullable enable
 //****************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2019, Mana Battery
+//* Copyright (c) 2019-2024, Mana Battery
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -68,7 +69,7 @@ namespace MB.Graphics2.TextureAtlas.Basic
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
 
-    public override bool Equals([NotNullWhen(true)] object? obj) => obj is AtlasTextureInfo other && (this == other);
+    public override bool Equals([NotNullWhen(true)] object? obj) => obj is AtlasTextureInfo info && (this == info);
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
 
